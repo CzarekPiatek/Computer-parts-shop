@@ -38,8 +38,8 @@ public class ProductManager {
     @EventListener(ApplicationReadyEvent.class)
     public void fillDatabase()
     {
-        save(new Product(1L,"lel","lel",30.5f));
-        save(new Product(2L,"eeel","eeeel",55.5f));
+        save(new Product("lel","lel",30.5f));
+        save(new Product("eeel","eeeel",55.5f));
     }
 
 }

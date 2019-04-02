@@ -1,9 +1,6 @@
 package com.shop.partsshop.dao.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Comment {
@@ -14,6 +11,16 @@ public class Comment {
 
     public Comment(String comment) {
         this.comment = comment;
+    }
+    @ManyToOne(fetch=FetchType.LAZY)
+    public Product product;
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Comment() {
@@ -26,6 +33,7 @@ public class Comment {
     public void setId(long id) {
         this.id = id;
     }
+
 
     public String getComment() {
         return comment;

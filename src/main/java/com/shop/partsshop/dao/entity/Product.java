@@ -1,9 +1,8 @@
 package com.shop.partsshop.dao.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -14,6 +13,17 @@ public class Product {
     private String name;
     private String category;
     private float price;
+
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="product")
+    public List<Comment> comments;
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
     public long getId() {
         return id;
@@ -47,8 +57,7 @@ public class Product {
         this.price = price;
     }
 
-    public Product(long id, String name, String category, float price) {
-        this.id = id;
+    public Product(String name, String category, float price) {
         this.name = name;
         this.category = category;
         this.price = price;
