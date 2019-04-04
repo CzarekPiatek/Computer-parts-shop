@@ -1,19 +1,21 @@
 package com.shop.partsshop.manager;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shop.partsshop.dao.CommentRepo;
 import com.shop.partsshop.dao.entity.Comment;
+import com.shop.partsshop.dao.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CommentManager {
 
     private CommentRepo commentRepo;
-
     @Autowired
     public CommentManager(CommentRepo commentRepo) {
         this.commentRepo = commentRepo;
@@ -30,7 +32,10 @@ public class CommentManager {
     public Comment save(Comment comment) {
         return commentRepo.save(comment);
     }
-
+    public List<Comment> findAllByProduct_Id(long id)
+    {
+        return commentRepo.findAllByProduct_Id(id);
+    }
     public void deleteById(Long id) {
         commentRepo.deleteById(id);
     }
@@ -40,8 +45,5 @@ public class CommentManager {
     {
         save(new Comment("Witam1"));
         save(new Comment("Witam2"));
-        save(new Comment("Witam3"));
-        save(new Comment("Witam4"));
-        save(new Comment("Witam5"));
     }
 }

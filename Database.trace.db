@@ -34,3 +34,7 @@ view table [42001-197]
 org.h2.jdbc.JdbcSQLException: Błąd składniowy w wyrażeniu SQL "PRODUCT[*]"; oczekiwano "PREPARE, {"
 Syntax error in SQL statement "PRODUCT[*]"; expected "PREPARE, {"; SQL statement:
 PRODUCT [42001-197]
+2019-04-04 22:03:12 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Błąd składniowy w wyrażeniu SQL "COMMENT[*]"; oczekiwano "ON"
+Syntax error in SQL statement "COMMENT[*]"; expected "ON"; SQL statement:
+COMMENT [42001-197]

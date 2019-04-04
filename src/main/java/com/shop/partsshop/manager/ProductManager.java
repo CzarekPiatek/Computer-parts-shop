@@ -7,6 +7,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,6 +28,19 @@ public class ProductManager {
         return productRepo.findAll();
     }
 
+    public List<Product> findAllByPriceBetween(float lower, float higher)
+    {
+        return productRepo.findAllByPriceBetween(lower,higher);
+    }
+
+    public List<Product> findAllByCategoryEquals(String category)
+    {
+        return productRepo.findAllByCategoryEquals(category);
+    }
+    public List<Product> findAllByNameContaining(String name)
+    {
+        return productRepo.findAllByNameContaining(name);
+    }
     public Product save(Product product) {
         return productRepo.save(product);
     }

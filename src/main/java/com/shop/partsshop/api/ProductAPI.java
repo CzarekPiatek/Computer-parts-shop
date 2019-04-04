@@ -4,6 +4,7 @@ import com.shop.partsshop.dao.entity.Product;
 import com.shop.partsshop.manager.ProductManager;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -43,5 +44,26 @@ public class ProductAPI {
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable long id){
         productManager.deleteById(id);
+    }
+
+    //znajdz produkt w przedziale cenowym
+    @GetMapping("/price")
+    public List<Product> findAllByPriceBetween(@RequestParam float lower, @RequestParam float higher)
+    {
+        return productManager.findAllByPriceBetween(lower,higher);
+    }
+
+    //produkt o nazwie
+    @GetMapping("/name")
+    public List<Product> findAllByNameContaining(@RequestParam String name)
+    {
+        return productManager.findAllByNameContaining(name);
+    }
+
+    //produkt danej kategorii
+    @GetMapping("/category")
+    public List<Product> findAllByCategoryEquals(@RequestParam String category)
+    {
+        return productManager.findAllByCategoryEquals(category);
     }
 }

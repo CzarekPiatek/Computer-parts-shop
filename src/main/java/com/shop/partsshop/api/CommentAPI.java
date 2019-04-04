@@ -4,6 +4,7 @@ import com.shop.partsshop.dao.entity.Comment;
 import com.shop.partsshop.manager.CommentManager;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -31,6 +32,13 @@ public class CommentAPI {
     @PostMapping
     public Comment addComment(@RequestBody Comment comment){
         return commentManager.save(comment);
+    }
+
+    //wypisuje komentarze dla danego ID
+    @GetMapping("/id")
+    public List<Comment> findAllByProduct_Id(@RequestParam long id)
+    {
+        return commentManager.findAllByProduct_Id(id);
     }
 
     //nadpisz komentarz

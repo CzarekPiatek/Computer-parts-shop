@@ -17,8 +17,9 @@ public class Product {
     private float price;
 
     @JsonIgnoreProperties("product")
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     public List<Comment> comments = new ArrayList<>();
+
 
     public List<Comment> getComments() {
         return comments;
